@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Study Planner - Project Blog</title>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">My Study Planner</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tasks.html">Manage Tasks</a></li>
+            <li><a href="blog.html">Project Blog</a></li>
+            <li><a href="ethics.html">Ethics & Privacy</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Project Plan & Troubleshooting Blog</h1>
+
+        <!-- Section 1: Agile Methodology -->
+        <section class="card">
+            <h2>1. Agile Methodology in Development</h2>
+            <p>For this project, I adopted aspects of the <strong>Agile methodology</strong>, specifically focusing on iterative development and continuous feedback. Instead of trying to build the entire application at once, I broke the project down into smaller, manageable features (like the login system, task creation, and validation).</p>
+            <p><strong>Reasoning:</strong> By using Agile principles, I was able to test each feature immediately after building it. This made it much easier to identify bugs early on, preventing them from cascading into larger issues later in the development process.</p>
+        </section>
+
+        <!-- Section 2: 3-Week Sprint Plan -->
+        <section class="card">
+            <h2>2. 3-Week Sprint Plan</h2>
+            <p>Below is the project plan outlining the development phases over a 3-week sprint.</p>
+            <table class="plan-table">
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>Tasks & Deliverables</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Planning</strong></td>
+                        <td>Define project scope, create wireframes, and set up the GitHub repository.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Analysis</strong></td>
+                        <td>Identify key features (CRUD tasks, login) and determine necessary data fields (course code, due date, etc.).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Design</strong></td>
+                        <td>Develop the HTML structure for all pages and create a consistent CSS layout (cards, navigation bar).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Implementation</strong></td>
+                        <td>Write JavaScript for interactivity: image carousel, login validation, and task management logic.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Testing & Maintenance</strong></td>
+                        <td>Test edge cases (past dates, empty fields), fix bugs, and write documentation (this blog).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section 3: Troubleshooting Log -->
+        <section class="card">
+            <h2>3. Troubleshooting Log</h2>
+
+            <!-- Error 1 -->
+            <div class="error-entry">
+                <h3>Error 1: JavaScript File Not Loading</h3>
+                <p><strong>Date/Time Encountered:</strong> 10 Nov 2026, 14:30 PM</p>
+                
+                <p><strong>Error Screenshot:</strong></p>
+                <img src="images/error1.png" alt="Error 1 Screenshot" class="blog-img">
+                
+                <p><strong>Code Causing the Issue:</strong></p>
+                <pre><code>// Incorrect script path in HTML
+&lt;script src="js/tasks_error.js"&gt;&lt;/script&gt;</code></pre>
+
+                <p><strong>Date/Time Resolved:</strong> 10 Nov 2026, 15:15 PM</p>
+                
+                <p><strong>Working Screenshot:</strong></p>
+                <img src="images/fixed1.png" alt="Fixed 1 Screenshot" class="blog-img">
+
+                <p><strong>Corrected Code:</strong></p>
+                <pre><code>// Corrected script path
+&lt;script src="js/tasks.js"&gt;&lt;/script&gt;</code></pre>
+
+                <p><strong>Explanation:</strong> The cause of the issue was a typo in the file path when linking the external JavaScript file. The browser returned a "404 Not Found" error in the console, preventing the task logic from running. I resolved it by correcting the filename in the HTML script tag, ensuring the browser could locate the correct JavaScript file.</p>
+            </div>
+
+            <hr>
+
+            <!-- Error 2 -->
+            <div class="error-entry">
+                <h3>Error 2: Invalid Date Validation Logic</h3>
+                <p><strong>Date/Time Encountered:</strong> 11 Nov 2026, 10:00 AM</p>
+                
+                <p><strong>Error Screenshot:</strong></p>
+                <img src="images/error1.png" alt="Error 2 Screenshot" class="blog-img">
+                
+                <p><strong>Code Causing the Issue:</strong></p>
+                <pre><code>// Incorrect implementation
+const today = new Date();
+const selectedDate = new Date(dueDate);
+if (selectedDate &lt; today) {
+    // Error logic here
+}</code></pre>
+
+                <p><strong>Date/Time Resolved:</strong> 11 Nov 2026, 11:30 AM</p>
+                
+                <p><strong>Working Screenshot:</strong></p>
+                <img src="images/fixed1.png" alt="Fixed 2 Screenshot" class="blog-img">
+
+                <p><strong>Corrected Code:</strong></p>
+                <pre><code>// Corrected implementation
+const today = new Date();
+today.setHours(0, 0, 0, 0); // Reset time to midnight
+const selectedDate = new Date(dueDate);
+if (selectedDate &lt; today) {
+    // Correct logic here
+}</code></pre>
+
+                <p><strong>Explanation:</strong> The issue was that the system allowed users to enter today's date but flagged it as an error if the time of day had already passed. I resolved this by using setHours(0,0,0,0) to reset the current time to midnight, allowing tasks to be due on the current day regardless of the current hour.</p>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
