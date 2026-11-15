@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Study Planner - Home</title>
+    <title>My Study Planner - Manage Tasks</title>
     <!-- Link to CSS file -->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -20,41 +20,102 @@
         </ul>
     </nav>
 
-    <!-- Main Content Area -->
     <main>
-        <!-- Main Heading -->
-        <h1>My Study Planner</h1>
+        <h1>Study Task Management</h1>
 
-        <!-- Image Carousel Section -->
-        <section class="image-section">
-            <img id="carousel-img" src="images/study1.jpg" alt="Study Image" width="500">
-            <br><br>
-            <button id="next-img-btn">Change Image</button>
+        <!-- Login Section -->
+        <section id="login-section" class="card">
+            <h2>Login Required</h2>
+            <p>Please enter the username and password to access your tasks.</p>
+            <p><em>(Hint: Use admin / 1234)</em></p>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <p id="login-error" class="error-msg" style="display: none;">Invalid username or password!</p>
+            </form>
         </section>
 
-        <!-- About the App Section -->
-        <section class="about-app">
-            <h2>About the App</h2>
-            <p>My Study Planner is a web-based application designed to help students effectively organize and manage their academic responsibilities.</p>
-            <p>It helps students keep track of assignments, quizzes, and project deadlines in one central location, reducing stress and improving productivity.</p>
-            <h3>Key Features:</h3>
-            <ul>
-                <li>Create and manage study tasks easily.</li>
-                <li>Set due dates and track progress.</li>
-                <li>Clear and user-friendly interface.</li>
-            </ul>
+        <!-- Task Management Section (Hidden by default) -->
+        <section id="task-section" style="display: none;">
+            
+            <!-- Task Form (For Create and Update) -->
+            <div class="card">
+                <h2 id="form-title">Create a New Task</h2>
+                <form id="task-form">
+                    <input type="hidden" id="task-id" value="">
+                    
+                    <div class="form-group">
+                        <label for="task-title">Task Title:</label>
+                        <input type="text" id="task-title" required placeholder="e.g. Complete Assignment 3">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="course-code">Course Code:</label>
+                        <input type="text" id="course-code" required placeholder="e.g. INFO1012">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="course-name">Course Name:</label>
+                        <input type="text" id="course-name" required placeholder="e.g. Information Technology Systems">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="due-date">Due Date:</label>
+                        <input type="date" id="due-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task-desc">Description:</label>
+                        <textarea id="task-desc" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task-notes">Additional Notes:</label>
+                        <input type="text" id="task-notes">
+                    </div>
+
+                    <button type="submit" class="btn" id="submit-btn">Add Task</button>
+                    <button type="button" class="btn btn-cancel" id="cancel-btn" style="display: none;">Cancel Edit</button>
+                    <p id="form-error" class="error-msg" style="display: none;"></p>
+                </form>
+            </div>
+
+            <!-- Task List Display -->
+            <div class="card">
+                <h2>My Current Tasks</h2>
+                <table id="task-list-table">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Course</th>
+                            <th>Due Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="task-list-body">
+                        <!-- Tasks will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Logout button -->
+            <button id="logout-btn" class="btn btn-cancel">Logout</button>
         </section>
 
-        <!-- About Me Section -->
-        <section class="about-me">
-            <h2>About Me</h2>
-            <p>Hello! I am a student currently studying Information Technology Systems.</p>
-            <p>My academic interests include web development, database management, and software engineering.</p>
-            <p>To manage my own study tasks, I usually use a combination of digital calendars and to-do lists to prioritize my weekly assignments.</p>
-        </section>
+        <!-- Current Date and Time (Required by assignment) -->
+        <div id="datetime-display" class="datetime-box">
+            Loading date and time...
+        </div>
     </main>
 
     <!-- Link to JavaScript file -->
-    <script src="js/script.js"></script>
+    <script src="js/tasks.js"></script>
 </body>
 </html>
